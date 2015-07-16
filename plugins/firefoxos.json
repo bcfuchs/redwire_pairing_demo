@@ -9,6 +9,9 @@
     "installed_plugins": {
         "cordova-plugin-websocket": {
             "PACKAGE_NAME": "com.tmc.glass.gp"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "com.tmc.glass.gp"
         }
     },
     "dependent_plugins": {}

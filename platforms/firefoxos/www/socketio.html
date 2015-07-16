@@ -23,7 +23,8 @@
             
             // load socket.io after all cordova plugins are loaded
             loadScript('js/socket.io.js', function () {
-              var socket = io.connect("http://10.0.2.2:8080");
+//              var socket = io.connect("http://10.0.2.2:8080");
+              var  socket = io.connect("192.168.1.81:8092");
               document.getElementById('log').innerHTML = "connecting";
               socket.on('ping', function (data) {
                 document.getElementById('log').innerHTML = data.message;
