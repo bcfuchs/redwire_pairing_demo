@@ -23,8 +23,7 @@
                 data.mobile = true;
                 data.msg = msg;
                 ws.send(JSON.stringify(data));
-                console.log(msg);
-                console.log(JSON.stringify(data));
+
             });
             ws.onopen = function () {
                 console.log('open');
@@ -57,16 +56,25 @@
         // and transmit only the keycode -- no translation on other side.
 
         var steer = function (text) {
+
+	    //  parse json string from QR code
+
             var info = JSON.parse(text);
+
+	    // get server info from QR code
+
             var ws_server = "ws://" + info.ip + ":" + info.p;
             // connect to the server
+
             console.log(ws_server);
             ws_client(ws_server);
+
             ///attach listeners to arrows
             // get data type and send msg
             // set color back to normal from hover
 
             $(".arrow").click(function () {
+		    // one of u, d,l,r    
                 var direction = $(this).attr("data-arrow");
 
                 var data = {};
@@ -74,8 +82,13 @@
                 data.filter = info.f;
                 // msg is now the keycode
 
+		// info specifies direction as keycode mapping to u,d,l,r
+		// to allow multi-player on one keyset.
+		// e.g. "u":40,"d":30
                 data.msg = info[direction];
-                console.log(data);
+		// element id of the QR code that has been scanned
+		// so the web client can hide it...
+		data.id = info.id
                 ws.send(JSON.stringify(data));
 
                 $(this).css({
