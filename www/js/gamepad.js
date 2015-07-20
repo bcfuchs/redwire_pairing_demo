@@ -2,18 +2,20 @@
 
     document.addEventListener('deviceready', function () {
        var ws;
+       var status = function (m) {
+	   $('#status2').html(m);
+       };
         var ws_client = function (ws_server) {
+
             // only connect after pairing
                ws = new WebSocket(ws_server, 'echo-protocol');
 
-            var status = function (m) {
-                $('#status').html(m);
-            };
+
             $("#date").html(new Date());
             $("#send").click(function (e) {
                 var msg = $('#msg-text').val();
 
-                status("sent msg: " + msg);
+
                 var data = {};
                 data.mobile = true;
                 data.msg = msg;
@@ -22,7 +24,7 @@
             });
             ws.onopen = function () {
                 console.log('open');
-                $("#msg").html("sending '" + msg + "'");
+		//                $("#msg").html("sending '" + msg + "'");
                 var data = {};
                 data.mobile = true;
                 data.msg = msg;
@@ -108,11 +110,11 @@
 
                 steer(result.text); // set up the arrows
                 $("#pair-scan").hide();
-		$("#status2").html("you're paired");
+		status("you're paired");
             },
 
             function (error) {
-		$("#status2").html("Houston we have a problem: "+ error);
+		status("Houston we have a problem: "+ error);
                 alert("Scanning failed: " + error);
             });
 
