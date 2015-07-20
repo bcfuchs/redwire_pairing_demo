@@ -1,15 +1,10 @@
 ! function () {
 
     document.addEventListener('deviceready', function () {
-	    var ws;
+       var ws;
         var ws_client = function (ws_server) {
             // only connect after pairing
-            /**
-            ws_server = 'ws://192.168.1.81:8092';
-            ws_server = 'ws://192.168.33.12:9092';
-            ws_server = 'ws://192.168.1.84:9092';
-            */
-             ws = new WebSocket(ws_server, 'echo-protocol');
+               ws = new WebSocket(ws_server, 'echo-protocol');
 
             var status = function (m) {
                 $('#status').html(m);
@@ -113,19 +108,18 @@
 
                 steer(result.text); // set up the arrows
                 $("#pair-scan").hide();
+		$("#status2").html("you're paired");
             },
 
             function (error) {
+		$("#status2").html("Houston we have a problem: "+ error);
                 alert("Scanning failed: " + error);
             });
 
         }; // pairme
 
         $("#pair-scan").click(function () {
-
             pairme();
-
-
         });
 
 

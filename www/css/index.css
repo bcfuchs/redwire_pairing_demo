@@ -37,7 +37,7 @@ body {
         color-stop(0.51, #E4E4E4)
     );
 */
-background-image: url("../img/broken.jpg");
+// background-image: url("../img/broken.jpg");
     background-attachment:fixed;
     font-family:'HelveticaNeue-Light', 'HelveticaNeue', Helvetica, Arial, sans-serif;
     color: white;
@@ -52,12 +52,10 @@ background-image: url("../img/broken.jpg");
 /* Portrait layout (default) */
 .app {
 
-//    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:50%;
     top:60%;
-    height:180px;                   /* text area height */
-    width:225px;                   /* text area width */
+
     text-align:center;
     padding:180px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
     margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
@@ -131,7 +129,7 @@ h1 {
 }
 
 .top1 {
-  height: 200px;
+  height: 600px;
   background-color: black;
   color: blue;
   z-index: 4444;
@@ -180,7 +178,15 @@ h1 {
 
 }
 
+.pair {
+      margin: 20px 0 0 0;
+
+}
 #pair-scan {
+
+	   -webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+	   border-radius: 3px;
   top: -20px;
   left: 20px;
   font-weight: bold;
